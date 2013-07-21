@@ -1,0 +1,11 @@
+extends ../partial_views/layout
+
+block content
+	form(method='post', action='register')
+		label(for='txtEmail') Email
+		input#txtEmail(name='email', type='email', placeholder='email')
+		label(for='txtPassword') Password
+		input#txtPassword(name='txtPassword', type='password', placeholder='password')
+		label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
+		input#txtConfirmPassword(name='txtConfirmPassword', type='password', placeholder='confirm password')
+		input#btnSubmit(name='btnSubmit', type='submit', value='Register')
