@@ -5,6 +5,8 @@ module.exports = function (sequelize, DataTypes) {
 		username: DataTypes.STRING,
 		email: { type: DataTypes.STRING, unique: true },
 		password: DataTypes.STRING,
-		salt: DataTypes.STRING
+		salt: DataTypes.STRING,
+	        accessToken: { type: DataTypes.STRING, unique: true }
+
 	});
 }
