@@ -27,7 +27,7 @@ if (!global.hasOwnProperty('db')) {
 	global.db = {
 		Sequelize: Sequelize,
 		sequelize: sequelize,
-		User: sequelize.import(__dirname + '/user')
+		user: sequelize.import(__dirname + '/user')
 	}
 }
 
