@@ -7,6 +7,7 @@
 var config = require('./../config/auth')
 	, hash = require('./hash')
 	, guid = require('./guid')
+	, crypto = require('./crypto')
 	, db = require('./../models');
 
 var authParser = function (req, res, next) {
@@ -69,19 +70,27 @@ var startUserSession = function (user, rememberMe, req, res, next) {
 	
 	req.session.uat = uat;
 
-	if(rememberMe)
-		res.cookie('uat', uat, { 
-			maxAge: 365 * 24 * 60 * 60 * 1000, 
-			httpOnly: true, 
-			signed: true 
-		}); // expires = 265 days, created signed cookie
+	//set uat into cookie
+	if(rememberMe) {
+		//encrypt uat object in json format
+		crypto.encrypt(JSON.stringify(uat), function (encrypted_text) {
+			res.cookie('uat', encrypted_text, { 
+				maxAge: 365 * 24 * 60 * 60 * 1000, 
+				httpOnly: true, 
+				signed: true 
+			}); // expires = 265 days, created signed cookie
+		});		
+	}		
 
 	next();
 }
 
 var restoreUserSessionFromCookie = function (req, res) {
 	if(req.signedCookies.uat != null && req.session.uat == null) {
-		req.session.uat = req.signedCookies.uat;
+		//decrypt uat object in json format
+		crypto.decrypt(req.signedCookies.uat, function (decrypted_text) {
+			req.session.uat = JSON.parse(decrypted_text);
+		});
 	}
 }
 

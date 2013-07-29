@@ -35,13 +35,13 @@ module.exports = function (app, db, helper) {
 		//login handled through /helper/auth.js
 		//req.session.uat contains username and accessToken
 		//continue with business logic
-		res.render('index');
+		res.redirect('/');
 	});
 
 	app.get('/user/logout', function (req, res) {
 		//logout handled through /helper/auth.js
 		//req.session.uat and req.cookies.uat is reset
 		//continue with business logic
-		res.render('index');
+		res.redirect('/');
 	});
 }
