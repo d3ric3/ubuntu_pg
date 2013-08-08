@@ -1,0 +1,12 @@
+mixin errorList(alerts)
+	ul
+		each alert, i in alerts
+			li=alert
+		
+
+//- end of mixin
+
+- if (typeof(alerts) !== 'undefined')
+	div.alert.alert-danger
+		button.close(type='button', data-dismiss='alert') &times;
+		mixin errorList(alerts)

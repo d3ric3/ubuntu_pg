@@ -1,11 +1,21 @@
 extends ../partial_views/layout
 
 block content
-	form(method='post', action='register')
-		label(for='txtEmail') Email
-		input#txtEmail(name='email', type='email', placeholder='email')
-		label(for='txtPassword') Password
-		input#txtPassword(name='txtPassword', type='password', placeholder='password')
-		label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
-		input#txtConfirmPassword(name='txtConfirmPassword', type='password', placeholder='confirm password')
-		input#btnSubmit(name='btnSubmit', type='submit', value='Register')
+	div.container
+		include ../partial_views/alerts
+		form(method='post', action='register')
+			div.row
+				div.col-lg-6.col-offset-3
+					label.control-label(for='txtEmail') Email
+					input#txtEmail.form-control(name='email', type='email', placeholder='email')
+			div.row
+				div.col-lg-6.col-offset-3
+					label.control-label(for='txtPassword') Password
+					input#txtPassword.form-control(name='txtPassword', type='password', placeholder='password')
+			div.row
+				div.col-lg-6.col-offset-3
+					label.control-label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
+					input#txtConfirmPassword.form-control(name='txtConfirmPassword', type='password', placeholder='confirm password')
+			div.row
+				div.col-lg-6.col-offset-3
+					input#btnSubmit.btn.btn-primary.form-control(name='btnSubmit', type='submit', value='Register')
