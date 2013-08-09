@@ -2,8 +2,10 @@ extends ../partial_views/layout
 
 block content
 	div.container
-		include ../partial_views/alerts
 		form(method='post', action='register')
+			div.row
+				div.col-lg-6.col-offset-3
+					include ../partial_views/alerts
 			div.row
 				div.col-lg-6.col-offset-3
 					label.control-label(for='txtEmail') Email
@@ -18,4 +20,7 @@ block content
 					input#txtConfirmPassword.form-control(name='txtConfirmPassword', type='password', placeholder='confirm password')
 			div.row
 				div.col-lg-6.col-offset-3
-					input#btnSubmit.btn.btn-primary.form-control(name='btnSubmit', type='submit', value='Register')
+					input#btnRegister.btn.btn-primary.form-control(name='btnRegister', type='submit', value='Register')
+
+block backbone_script
+	script(src='/javascripts/user-register.js')

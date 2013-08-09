@@ -27,6 +27,11 @@ module.exports = function (app, db, helper) {
 	app.get('/user/register', function (req, res) {
 		res.render('user/register');
 	});
+	app.post('/user/register', function (req, res) {
+		var b = req.body;
+		if(b.txtPassword != b.txtConfirmPassword)
+			res.render('user/register', { alerts: ['Plase make sure password and confirm password are the same'] })
+	})
 
 	app.get('/user/login', function (req, res) {
 		res.render('user/login');

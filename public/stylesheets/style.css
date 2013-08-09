@@ -14,7 +14,18 @@
 @media (max-width: 480px) {
   
 }
+/* general classes */
+.display-none {
+  display: none;
+}
+.display-block {
+  display: block;
+}
+/* override twitter bootstrap */
 .row {
   margin-top: 7.5px;
   margin-bottom: 7.5px;
+}
+.alert {
+  margin-bottom: 0;
 }
