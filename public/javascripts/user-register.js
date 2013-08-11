@@ -1,7 +1,8 @@
 if (typeof window['SMESupply'] === 'undefined')
 	window.SMESupply = {
 		Models: {},
-		Views: {}
+		Views: {},
+		Collections: {}
 	}
 
 //manipulating partial_views/alerts.jade for displaying alert msg
@@ -10,7 +11,6 @@ SMESupply.Views.Alert = Backbone.View.extend({
 	template: _.template('<div id="backbone-alert" class="alert alert-danger">' +
 						'<button class="close" data-dismiss="alert">&times;</button>' +
 						'<%= alertList %>' +
-						//'<ul class="list-style-none"><%= alertList %></ul>' +
 						'</div>'),
 	render: function (alertList) {
 		var alert_li = ''
@@ -35,6 +35,7 @@ SMESupply.Models.UserRegister = Backbone.Model.extend({
 	validate: function (attrs) {
 		var guides = []
 		if (!attrs.email) guides.push('email can not be empty')
+		if (!this.isValidateEmail(attrs.email) && attrs.email) guides.push('please provide valid email')
 		if (!attrs.password) guides.push('password can not be empty')
 		if (!attrs.confirmPassword) guides.push('confirm password can not be empty')
 		if (attrs.password !== attrs.confirmPassword) guides.push('password and confirm password must be same')
@@ -44,13 +45,33 @@ SMESupply.Models.UserRegister = Backbone.Model.extend({
 		this.set('email', $('#txtEmail').val())
 		this.set('password', $('#txtPassword').val())
 		this.set('confirmPassword', $('#txtConfirmPassword').val())
+	},
+	isUserExist: function (fn) {
+		//return true or false on fn otherwise return Error
+		this.refreshModelFromPage()
+		var email = this.get('email')
+		if (email)
+			$.ajax({
+				url: '/api/users/' + this.get('email'),
+				async: true,
+				success: function (data) {
+					fn(data.exist, null)
+				}
+			})
+		else
+			fn(false, new Error('email can not be empty'))
+	},
+	isValidateEmail: function (email) {
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(email)
 	}
 })
 
 SMESupply.Views.UserRegister = Backbone.View.extend({
 	el: $('.container'),
 	events: {
-		'click #btnRegister': 'submitCheck'
+		'click #btnRegister': 'submitCheck',
+		'change #txtEmail': 'emailCheck'
 	},
 	submitCheck: function () {
 		this.model.refreshModelFromPage()
@@ -59,6 +80,12 @@ SMESupply.Views.UserRegister = Backbone.View.extend({
 			return false
 		}
 	},
+	emailCheck: function () {
+		this.model.isUserExist(function (bool, err) {
+			if(!err && bool)
+				(new SMESupply.Views.Alert()).render(['email already exists in our system'])
+		})
+	}
 })
 
 //backbone initialization

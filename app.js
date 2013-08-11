@@ -37,8 +37,8 @@ if ('development' == app.get('env')) {
 require('./routes/index')(app, db, helper);
 require('./routes/user')(app, db, helper);
 
-// app.get('/', routes.index);
-// app.get('/users', user.list);
+//api settings
+require('./api/users')(app, db)
 
 db.sequelize.sync().complete(function (err){
 	if (err) {
