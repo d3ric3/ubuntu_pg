@@ -6,6 +6,20 @@ html(lang='en')
     link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    div.navbar
+        div.container
+            //- collapsed navigation below 768px
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            //- brand
+            a.navbar-brand(href='#') SMESupply
+            div.nav-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href='#') About
+                    li: a(href='#') Contact&nbsp;Us
     block content
 
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')

@@ -9,14 +9,13 @@ SMESupply.Views.Alert = Backbone.View.extend({
 	el: $('#alert-container'),
 	template: _.template('<div id="backbone-alert" class="alert alert-danger">' +
 						'<button class="close" data-dismiss="alert">&times;</button>' +
-						'<ul><%= alertList %></ul>' +
+						'<%= alertList %>' +
+						//'<ul class="list-style-none"><%= alertList %></ul>' +
 						'</div>'),
 	render: function (alertList) {
-		// this.$el.children().removeClass('display-none')
-		// var alert_ul = this.$el.find('#alert-ul')
 		var alert_li = ''
 		_.each(alertList, function (alert) {
-			alert_li += '<li>' + alert + '</li>'
+			alert_li += '<div>' + alert + '</div>'
 		})
 		this.$el.find('#backbone-alert').remove()
 		this.$el.append( this.template( { alertList: alert_li } ) )

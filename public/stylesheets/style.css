@@ -21,6 +21,9 @@
 .display-block {
   display: block;
 }
+.list-style-none {
+  list-style-type: none;
+}
 /* override twitter bootstrap */
 .row {
   margin-top: 7.5px;
