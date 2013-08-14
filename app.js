@@ -4,12 +4,12 @@
  */
 
 var express = require('express')
-  // , routes = require('./routes')
-  // , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path')
-  , db = require('./models')
-  , helper = require('./helper');
+	// , routes = require('./routes')
+	// , user = require('./routes/user')
+	, http = require('http')
+	, path = require('path')
+	, db = require('./models')
+	, helper = require('./helper');
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 //routes settings
@@ -45,7 +45,8 @@ db.sequelize.sync().complete(function (err){
 		throw err;
 	} else {
 		http.createServer(app).listen(app.get('port'), function(){
-		  console.log('Express server listening on port ' + app.get('port'));
+			console.log('NODE_ENV: ' + process.env.NODE_ENV);
+			console.log('Express server listening on port ' + app.get('port'));
 		});
 	}
 });
