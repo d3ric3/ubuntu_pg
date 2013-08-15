@@ -15,7 +15,15 @@ if (!global.hasOwnProperty('db')) {
     	});
 	} else {
 		// the application is executed on the local machine
-		var dbConfig = require('./../config/db').pg;
+		var dbConfig = require('./../config/db').dev.pg;
+
+		// grab test config if NODE_ENV=test
+		if (process.env.NODE_ENV)
+			if (process.env.NODE_ENV == 'test')
+				dbConfig = require('./../config/db').test.pg
+
+		console.log(JSON.stringify(dbConfig));
+
 		sequelize = new Sequelize(dbConfig.db, dbConfig.username, dbConfig.password, {
 			dialect: dbConfig.dialect,
 			port: dbConfig.port,

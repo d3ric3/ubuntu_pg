@@ -4,12 +4,14 @@ if (!global.hasOwnProperty('helper')) {
 	var guid = require('./guid');
 	var authParser = require('./auth');
 	var crypto = require('./crypto');
+	var views = require('./views');
 
 	global.helper = {
 		hash: hash,
 		guid: guid,
 		authParser: authParser,
-		crypto: crypto
+		crypto: crypto,
+		views: views
 	}
 }
 

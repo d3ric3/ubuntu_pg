@@ -40,7 +40,10 @@ module.exports = function (app, db, helper) {
 		//login handled through /helper/auth.js
 		//req.session.uat contains username and accessToken
 		//continue with business logic
-		res.redirect('/');
+		if (res.locals.alerts)
+			res.render('user/login');
+		else
+			res.redirect('/');
 	});
 
 	app.get('/user/logout', function (req, res) {

@@ -8,6 +8,7 @@ var config = require('./../config/auth')
 	, hash = require('./hash')
 	, guid = require('./guid')
 	, crypto = require('./crypto')
+	, views = require('./views')
 	, db = require('./../models');
 
 var authParser = function (req, res, next) {
@@ -41,18 +42,22 @@ var login = function (req, res, next) {
 	.success(function (user) {
 		var u = user;
 
-		if(u == null)
-			return next(new Error('Invalid email'));
+		if(u == null) {
+			views.addAlert('email does not exist in our system', res);
+			return next();
+		}
 
 		//hash input password with user's password salt
 		hash(password, u.salt, function (err, hashed_pass) {
-			if (err) 
+			if (err)
 				return next(err);
 			else {
 				if(hashed_pass == u.password)
 					startUserSession(u, rememberMe, req, res, next);
-				else
-					return next(new Error('Invalid password'));
+				else {
+					views.addAlert('invalid password');
+					return next();
+				}
 			}
 		});
 	});

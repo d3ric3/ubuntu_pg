@@ -5,6 +5,9 @@ block content
 		form(method='post', action='login')
 			div.row
 				div.col-lg-6.col-offset-3
+					include ../partial_views/alerts
+			div.row
+				div.col-lg-6.col-offset-3
 					label.control-label(for='txtEmail') Email
 					input#txtEmail.form-control(name='txtEmail', type='email', placeholder='email')
 			div.row

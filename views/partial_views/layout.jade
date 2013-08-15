@@ -24,8 +24,12 @@ html(lang='en')
                                 a(href='#') About
                             li: a(href='#') Contact&nbsp;Us
                     div.nav-collapse.collapse.navbar-responsive-collapse.pull-right
-                        ul.nav.navbar-nav
-                            li: a(href='#') Login
+                        - if (req.session.uat != null)
+                            ul.nav.navbar-nav
+                                li: a(href='/user/logout') Logout
+                        - else
+                            ul.nav.navbar-nav
+                                li: a(href='/user/login') Login
         div.row
             div.col-lg-10.col-offset-1
                 block content

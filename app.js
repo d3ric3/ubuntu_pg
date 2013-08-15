@@ -24,6 +24,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.session({ secret: '860128145103' }));
 app.use(helper.authParser);
+app.use(helper.views.parser);
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
