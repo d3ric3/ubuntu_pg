@@ -1,7 +1,7 @@
 extends ../partial_views/layout
 
 block content
-	div.container
+	div#backboneView.container
 		form(method='post', action='login')
 			div.row
 				div.col-lg-6.col-offset-3
@@ -21,3 +21,6 @@ block content
 			div.row
 				div.col-lg-6.col-offset-3
 					input#btnSubmit.btn.btn-primary.form-control(name='btnSubmit', type='submit', value='Login')
+
+block backbone_script
+	script(src='/javascripts/user-login.js')

@@ -1,27 +1,3 @@
-if (typeof window['SMESupply'] === 'undefined')
-	window.SMESupply = {
-		Models: {},
-		Views: {},
-		Collections: {}
-	}
-
-//manipulating partial_views/alerts.jade for displaying alert msg
-SMESupply.Views.Alert = Backbone.View.extend({
-	el: $('#alert-container'),
-	template: _.template('<div id="backbone-alert" class="alert alert-danger">' +
-						'<button class="close" data-dismiss="alert">&times;</button>' +
-						'<%= alertList %>' +
-						'</div>'),
-	render: function (alertList) {
-		var alert_li = ''
-		_.each(alertList, function (alert) {
-			alert_li += '<div>' + alert + '</div>'
-		})
-		this.$el.find('#backbone-alert').remove()
-		this.$el.append( this.template( { alertList: alert_li } ) )
-	}
-})
-
 //backbone model & view definations
 SMESupply.Models.UserRegister = Backbone.Model.extend({
 	defaults: {
@@ -33,13 +9,13 @@ SMESupply.Models.UserRegister = Backbone.Model.extend({
 		this.refreshModelFromPage()
 	},
 	validate: function (attrs) {
-		var guides = []
-		if (!attrs.email) guides.push('email can not be empty')
-		if (!this.isValidateEmail(attrs.email) && attrs.email) guides.push('please provide valid email')
-		if (!attrs.password) guides.push('password can not be empty')
-		if (!attrs.confirmPassword) guides.push('confirm password can not be empty')
-		if (attrs.password !== attrs.confirmPassword) guides.push('password and confirm password must be same')
-		if (guides.length > 0) return guides
+		var alerts = []
+		if (!attrs.email) alerts.push('email can not be empty')
+		if (!this.isValidEmail(attrs.email) && attrs.email) alerts.push('please provide valid email')
+		if (!attrs.password) alerts.push('password can not be empty')
+		if (!attrs.confirmPassword) alerts.push('confirm password can not be empty')
+		if (attrs.password !== attrs.confirmPassword) alerts.push('password and confirm password must be same')
+		if (alerts.length > 0) return alerts
 	},
 	refreshModelFromPage: function () {
 		this.set('email', $('#txtEmail').val())
@@ -61,14 +37,14 @@ SMESupply.Models.UserRegister = Backbone.Model.extend({
 		else
 			fn(false, new Error('email can not be empty'))
 	},
-	isValidateEmail: function (email) {
+	isValidEmail: function (email) {
 	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	    return re.test(email)
 	}
 })
 
 SMESupply.Views.UserRegister = Backbone.View.extend({
-	el: $('.container'),
+	el: $('#backboneView'),
 	events: {
 		'click #btnRegister': 'submitCheck',
 		'change #txtEmail': 'emailCheck'
@@ -89,7 +65,7 @@ SMESupply.Views.UserRegister = Backbone.View.extend({
 })
 
 //backbone initialization
-var userRegister = new SMESupply.Models.UserRegister()
+var userRegisterModel = new SMESupply.Models.UserRegister()
 var userRegisterView = new SMESupply.Views.UserRegister({
-	model: userRegister
+	model: userRegisterModel
 })

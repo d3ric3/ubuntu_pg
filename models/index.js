@@ -20,9 +20,7 @@ if (!global.hasOwnProperty('db')) {
 		// grab test config if NODE_ENV=test
 		if (process.env.NODE_ENV)
 			if (process.env.NODE_ENV == 'test')
-				dbConfig = require('./../config/db').test.pg
-
-		console.log(JSON.stringify(dbConfig));
+				dbConfig = require('./../config/db').test.pg;
 
 		sequelize = new Sequelize(dbConfig.db, dbConfig.username, dbConfig.password, {
 			dialect: dbConfig.dialect,
