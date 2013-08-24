@@ -1,5 +1,6 @@
-if (typeof window['SMESupply'] === 'undefined')
-	window.SMESupply = {
+//global namespacing for backbone
+if (typeof SMESupply === 'undefined')
+	SMESupply = {
 		Models: {},
 		Views: {},
 		Collections: {}

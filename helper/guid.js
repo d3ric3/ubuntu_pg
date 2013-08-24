@@ -1,4 +1,5 @@
 module.exports = function(){
+    
     var idx = [], itoh = '0123456789ABCDEF'.split('');
  
     // Array of digits in UUID (32 digits + 4 dashes)

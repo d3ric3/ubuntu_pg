@@ -29,17 +29,41 @@ module.exports = function (app, db, helper) {
 	});
 	app.post('/user/register', function (req, res) {
 		var b = req.body;
-		if(b.txtPassword != b.txtConfirmPassword)
-			res.render('user/register', { alerts: ['Plase make sure password and confirm password are the same'] })
-	})
+
+		//validation copy from SMESupply.Models.UserRegister
+		var alerts = [];
+		if (!b.txtEmail) alerts.push('Email can not be empty')
+		if (!helper.validate.isEmail(b.txtEmail) && b.txtEmail) alerts.push('Please provide valid email')
+		if (!b.txtPassword) alerts.push('Password can not be empty')
+		if (!b.txtConfirmPassword) alerts.push('Confirm password can not be empty')
+		if (b.txtPassword !== b.txtConfirmPassword) alerts.push('Password and confirm password must be same')
+
+		if(alerts.length > 0)
+			res.render('user/register', { alerts: alerts })
+		else
+			res.render('user/register')
+	});
 
 	app.get('/user/login', function (req, res) {
-		res.render('user/login');
+		var b = req.body;
+
+		//validation copy from SMESupply.Models.User
+		var alerts = []
+		if (!b.txtEmail) alerts.push('Email can not be empty')
+		if (!helper.validate.isEmail(b.txtEmail) && b.txtEmail) alerts.push('Please provide valid email')
+		if (!b.txtPassword) alerts.push('Password can not be empty')
+
+		if (alerts.length > 0)
+			res.render('user/login', { alerts: alerts })
+		else
+			res.redirect('/')
 	});
 	app.post('/user/login', function (req, res) {
 		//login handled through /helper/auth.js
 		//req.session.uat contains username and accessToken
 		//continue with business logic
+
+		//alert(s) generated from /helper/auth.js
 		if (res.locals.alerts)
 			res.render('user/login');
 		else

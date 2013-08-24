@@ -1,34 +1,34 @@
 //backbone model & view definations
 SMESupply.Models.UserRegister = Backbone.Model.extend({
 	defaults: {
-		email: null,
-		password: null,
-		confirmPassword: null
+		txtEmail: null,
+		txtPassword: null,
+		txtConfirmPassword: null
 	},
 	initialize: function () {
 		this.refreshModelFromPage()
 	},
 	validate: function (attrs) {
 		var alerts = []
-		if (!attrs.email) alerts.push('email can not be empty')
-		if (!this.isValidEmail(attrs.email) && attrs.email) alerts.push('please provide valid email')
-		if (!attrs.password) alerts.push('password can not be empty')
-		if (!attrs.confirmPassword) alerts.push('confirm password can not be empty')
-		if (attrs.password !== attrs.confirmPassword) alerts.push('password and confirm password must be same')
+		if (!attrs.txtEmail) alerts.push('Email can not be empty')
+		if (!this.isValidEmail(attrs.txtEmail) && attrs.txtEmail) alerts.push('Please provide valid email')
+		if (!attrs.txtPassword) alerts.push('Password can not be empty')
+		if (!attrs.txtConfirmPassword) alerts.push('Confirm password can not be empty')
+		if (attrs.txtPassword !== attrs.txtConfirmPassword) alerts.push('Password and confirm password must be same')
 		if (alerts.length > 0) return alerts
 	},
 	refreshModelFromPage: function () {
-		this.set('email', $('#txtEmail').val())
-		this.set('password', $('#txtPassword').val())
-		this.set('confirmPassword', $('#txtConfirmPassword').val())
+		this.set('txtEmail', $('#txtEmail').val())
+		this.set('txtPassword', $('#txtPassword').val())
+		this.set('txtConfirmPassword', $('#txtConfirmPassword').val())
 	},
 	isUserExist: function (fn) {
 		//return true or false on fn otherwise return Error
 		this.refreshModelFromPage()
-		var email = this.get('email')
+		var email = this.get('txtEmail')
 		if (email)
 			$.ajax({
-				url: '/api/users/' + this.get('email'),
+				url: '/api/users/' + this.get('txtEmail'),
 				async: true,
 				success: function (data) {
 					fn(data.exist, null)
@@ -66,6 +66,7 @@ SMESupply.Views.UserRegister = Backbone.View.extend({
 
 //backbone initialization
 var userRegisterModel = new SMESupply.Models.UserRegister()
+
 var userRegisterView = new SMESupply.Views.UserRegister({
 	model: userRegisterModel
 })

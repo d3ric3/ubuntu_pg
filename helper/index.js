@@ -5,13 +5,15 @@ if (!global.hasOwnProperty('helper')) {
 	var authParser = require('./auth');
 	var crypto = require('./crypto');
 	var views = require('./views');
+	var validate = require('./validate');
 
 	global.helper = {
 		hash: hash,
 		guid: guid,
 		authParser: authParser,
 		crypto: crypto,
-		views: views
+		views: views,
+		validate: validate
 	}
 }
 

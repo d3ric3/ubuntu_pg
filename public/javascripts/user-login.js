@@ -1,25 +1,25 @@
 //backbone model & view definations
 SMESupply.Models.UserLogin = Backbone.Model.extend({
 	defaults: {
-		email: null,
-		password: null,
-		rememberMe: null
+		txtEmail: null,
+		txtPassword: null,
+		chkRememberMe: null
 	},
 	initialize: function () {
 		this.refreshModelFromPage()
 	},
 	validate: function (attrs) {
 		var alerts = []
-		if (!attrs.email) alerts.push('email can not be empty')
-		if (!this.isValidEmail(attrs.email) && attrs.email) alerts.push('please provide valid email')
-		if (!attrs.password) alerts.push('password can not be empty')
+		if (!attrs.txtEmail) alerts.push('Email can not be empty')
+		if (!this.isValidEmail(attrs.txtEmail) && attrs.txtEmail) alerts.push('Please provide valid email')
+		if (!attrs.txtPassword) alerts.push('Password can not be empty')
 		if (alerts.length > 0)
 			return alerts
 	},
 	refreshModelFromPage: function () {
-		this.set('email', $('#txtEmail').val())
-		this.set('password', $('#txtPassword').val())
-		this.set('rememberMe', $('#chkRememberMe').val())
+		this.set('txtEmail', $('#txtEmail').val())
+		this.set('txtPassword', $('#txtPassword').val())
+		this.set('chkRememberMe', $('#chkRememberMe').val())
 	},
 	isValidEmail: function (email) {
 	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -43,6 +43,7 @@ SMESupply.Views.UserLogin = Backbone.View.extend({
 
 //backbone initialization
 var userLoginModel = new SMESupply.Models.UserLogin()
+
 var userLoginView = new SMESupply.Views.UserLogin({
 	model: userLoginModel
 })
