@@ -45,21 +45,10 @@ module.exports = function (app, db, helper) {
 	});
 
 	app.get('/user/login', function (req, res) {
-		var b = req.body;
-
-		//validation copy from SMESupply.Models.User
-		var alerts = []
-		if (!b.txtEmail) alerts.push('Email can not be empty')
-		if (!helper.validate.isEmail(b.txtEmail) && b.txtEmail) alerts.push('Please provide valid email')
-		if (!b.txtPassword) alerts.push('Password can not be empty')
-
-		if (alerts.length > 0)
-			res.render('user/login', { alerts: alerts })
-		else
-			res.redirect('/')
+		res.render('user/login')
 	});
 	app.post('/user/login', function (req, res) {
-		//login handled through /helper/auth.js
+		//login logic handled through /helper/auth.js
 		//req.session.uat contains username and accessToken
 		//continue with business logic
 
@@ -71,7 +60,7 @@ module.exports = function (app, db, helper) {
 	});
 
 	app.get('/user/logout', function (req, res) {
-		//logout handled through /helper/auth.js
+		//logout logic handled through /helper/auth.js
 		//req.session.uat and req.cookies.uat is reset
 		//continue with business logic
 		res.redirect('/');

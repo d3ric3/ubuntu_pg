@@ -12,10 +12,13 @@ module.exports = {
 	//add alerts variables to current http response
 	//same with res.render('path', { alerts: ['message'] })
 	addAlert: function (message, res) {
-		if (res.locals.alerts)
-			res.locals.alerts.push(message);
+		var resAlerts = res.locals.alerts;
+		var m = message;
+		//if resAlerts not null
+		if (resAlerts)
+			resAlerts = (m instanceof Array) ? resAlerts.concat(m) : resAlerts.push(m);
 		else
-			res.locals.alerts = [message];
+			resAlerts = (m instanceof Array) ? m : [m];
 	},
 
 	//remove alerts variables to current http response

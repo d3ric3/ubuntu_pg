@@ -4,23 +4,23 @@ block content
 	div#backboneView.container
 		form(method='post', action='register')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					include ../partial_views/alerts
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					label.control-label(for='txtEmail') Email
 					input#txtEmail.form-control(name='email', type='email', placeholder='email')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					label.control-label(for='txtPassword') Password
 					input#txtPassword.form-control(name='txtPassword', type='password', placeholder='password')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					label.control-label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
 					input#txtConfirmPassword.form-control(name='txtConfirmPassword', type='password', placeholder='confirm password')
 			div.row
-				div.col-lg-6.col-offset-3
-					input#btnRegister.btn.btn-primary.form-control(name='btnRegister', type='submit', value='Register')
+				div.col-lg-6.col-lg-offset-3
+					input#btnRegister.btn.btn-default.form-control(name='btnRegister', type='submit', value='Register')
 
 block backbone_script
 	script(src='/javascripts/user-register.js')

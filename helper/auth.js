@@ -9,6 +9,7 @@ var config = require('./../config/auth')
 	, guid = require('./guid')
 	, crypto = require('./crypto')
 	, views = require('./views')
+	, validate = require('./validate')
 	, db = require('./../models');
 
 var authParser = function (req, res, next) {
@@ -31,36 +32,46 @@ var login = function (req, res, next) {
 	var username = req.body[config.login.view.username];
 	var password = req.body[config.login.view.password];
 	var rememberMe = (req.body[config.login.view.rememberMe] == 'on') ? true : false;
+
+	//validation copy from SMESupply.Models.User
+	var alerts = [];
+	if (!username) alerts.push('Email can not be empty');
+	if (!validate.isEmail(b.txtEmail) && username) alerts.push('Please provide valid email');
+	if (!password) alerts.push('Password can not be empty');
 	
-	//look for user in db
-	db.user.find({
-		where: { email: username }
-	})
-	.error(function (err) { 
-		return next(err);
-	})
-	.success(function (user) {
-		var u = user;
+	if (alerts.length > 0)
+		views.addAlert(alerts);
+	else {
+		//look for user in db
+		db.user.find({
+			where: { email: username }
+		})
+		.error(function (err) { 
+			return next(err);
+		})
+		.success(function (user) {
+			var u = user;
 
-		if(u == null) {
-			views.addAlert('email does not exist in our system', res);
-			return next();
-		}
-
-		//hash input password with user's password salt
-		hash(password, u.salt, function (err, hashed_pass) {
-			if (err)
-				return next(err);
-			else {
-				if(hashed_pass == u.password)
-					startUserSession(u, rememberMe, req, res, next);
-				else {
-					views.addAlert('invalid password');
-					return next();
-				}
+			if(u == null) {
+				views.addAlert('email does not exist in our system', res);
+				return next();
 			}
+
+			//hash input password with user's password salt
+			hash(password, u.salt, function (err, hashed_pass) {
+				if (err)
+					return next(err);
+				else {
+					if(hashed_pass == u.password)
+						startUserSession(u, rememberMe, req, res, next);
+					else {
+						views.addAlert('invalid password');
+						return next();
+					}
+				}
+			});
 		});
-	});
+	}
 }
 
 var startUserSession = function (user, rememberMe, req, res, next) {

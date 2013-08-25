@@ -4,23 +4,23 @@ block content
 	div#backboneView.container
 		form(method='post', action='login')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					include ../partial_views/alerts
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					label.control-label(for='txtEmail') Email
 					input#txtEmail.form-control(name='txtEmail', type='email', placeholder='email')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					label.control-label(for='txtPassword') Password
 					input#txtPassword.form-control(name='txtPassword', type='password', placeholder='password')
 			div.row
-				div.col-lg-6.col-offset-3
+				div.col-lg-6.col-lg-offset-3
 					input#chkRememberMe(name='chkRememberMe', type='checkbox')
 					label(for='chkRememberMe') &nbsp;Remember&nbsp;Me
 			div.row
-				div.col-lg-6.col-offset-3
-					input#btnSubmit.btn.btn-primary.form-control(name='btnSubmit', type='submit', value='Login')
+				div.col-lg-6.col-lg-offset-3
+					input#btnSubmit.btn.btn-default.form-control(name='btnSubmit', type='submit', value='Login')
 
 block backbone_script
 	script(src='/javascripts/user-login.js')

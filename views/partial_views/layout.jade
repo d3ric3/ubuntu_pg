@@ -1,43 +1,51 @@
 doctype 5
 html(lang='en')
-  head
-    title= "Welcome to SME Supply - empowering small medium enterprise"
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    div.container
-        div.row
-        div.row
-            div.navbar.col-lg-10.col-offset-1
-                div.container
-                    //- collapsed navigation below 768px
-                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    //- brand
-                    a.navbar-brand(href='/') SME&nbsp;Supply
-                    div.nav-collapse.collapse.navbar-responsive-collapse
-                        ul.nav.navbar-nav
-                            li.active
-                                a(href='#') About
-                            li: a(href='#') Contact&nbsp;Us
-                    div.nav-collapse.collapse.navbar-responsive-collapse.pull-right
-                        - if (req.session.uat != null)
-                            ul.nav.navbar-nav
-                                li: a(href='/user/logout') Logout
-                        - else
-                            ul.nav.navbar-nav
-                                li: a(href='/user/login') Login
-        div.row
-            div.col-lg-10.col-offset-1
-                block content
+	head
+		title= "Welcome to SME Supply - empowering small medium enterprise"
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		//- link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/css/bootstrap.min.css')
+		link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		div.container
+				div.row
+					span.pull-right.glyphicon.glyphicon-envelope: a.pull-right(href='mailto:admin@smesupply.com'): small.text-muted.ss-font &nbsp;Email&nbsp;Us&nbsp;&nbsp;&nbsp;
+				div.row
+						nav.navbar.navbar-inverse(role='navigation')
+								div.navbar-header
+										button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+											span.sr-only= 'Toggle navigation'
+											span.icon-bar
+											span.icon-bar
+											span.icon-bar
+										a.navbar-brand(href='/')= 'SME Supply'
 
-    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/js/bootstrap.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js')
-    script(src='/javascripts/smesupply-global.js')
+								div.collapse.navbar-collapse.navbar-ex1-collapse
+									ul.nav.navbar-nav
+										li.active: a(href='#')= 'About'
+										li: a(href='#')= 'Contact Us'
+										li.dropdown
+											a.dropdown-toggle(href='#', data-toggle='dropdown') Dropdown
+												ul.dropdown-menu
+													li: a(href='#') Action
+													li: a(href='#')= 'Another action'
+													li: a(href='#')= 'Something else'
+									- if (req.session.uat != null)
+										ul.nav.navbar-nav.navbar-right
+											li: a(href='/user/logout')= 'Logout'
+									- else
+										ul.nav.navbar-nav.navbar-right
+											li: a(href='/user/login')= 'Sign In'
+											li: a(href='/user/register')= 'Join'
+						
+				div.row
+					block content
+								
+		script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+		//- script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/js/bootstrap.min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js')
+		script(src='/javascripts/smesupply-global.js')
 
-    block backbone_script
+		block backbone_script
