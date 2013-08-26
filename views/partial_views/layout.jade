@@ -9,7 +9,9 @@ html(lang='en')
 	body
 		div.container
 				div.row
-					span.pull-right.glyphicon.glyphicon-envelope: a.pull-right(href='mailto:admin@smesupply.com'): small.text-muted.ss-font &nbsp;Email&nbsp;Us&nbsp;&nbsp;&nbsp;
+					span.pull-left.glyphicon.glyphicon-share-alt.hidden-xs: small.text-muted.ss-font.header-top-sm= 'Free Shipping. Product Usage Warranty.'
+					span.pull-right.glyphicon.glyphicon-envelope: small.text-muted.ss-font.header-top-sm: a(href='mailto:admin@smesupply.com')= 'Email Us'
+					span.pull-right.glyphicon.glyphicon-phone-alt: small.text-muted.ss-font.header-top-sm= '+6 017 663 1034'
 				div.row
 						nav.navbar.navbar-inverse(role='navigation')
 								div.navbar-header
@@ -23,13 +25,13 @@ html(lang='en')
 								div.collapse.navbar-collapse.navbar-ex1-collapse
 									ul.nav.navbar-nav
 										li.active: a(href='#')= 'About'
-										li: a(href='#')= 'Contact Us'
 										li.dropdown
-											a.dropdown-toggle(href='#', data-toggle='dropdown') Dropdown
+											a.dropdown-toggle(href='#', data-toggle='dropdown')= 'Products'
 												ul.dropdown-menu
-													li: a(href='#') Action
-													li: a(href='#')= 'Another action'
-													li: a(href='#')= 'Something else'
+													li: a(href='#')= 'Company'
+													li: a(href='#')= 'Individual'
+													li: a(href='#')= 'Others'
+										li: a(href='#')= 'Inquiry'
 									- if (req.session.uat != null)
 										ul.nav.navbar-nav.navbar-right
 											li: a(href='/user/logout')= 'Logout'
@@ -37,10 +39,10 @@ html(lang='en')
 										ul.nav.navbar-nav.navbar-right
 											li: a(href='/user/login')= 'Sign In'
 											li: a(href='/user/register')= 'Join'
-						
+
 				div.row
 					block content
-								
+
 		script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
 		//- script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/js/bootstrap.min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js')

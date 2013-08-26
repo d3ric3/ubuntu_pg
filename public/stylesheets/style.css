@@ -29,3 +29,18 @@
 .ss-font {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.header-top-sm {
+  line-height: 60%;
+  margin: 0 0.5em 0 0.3em;
+  color: grey;
+}
+.header-top-sm:hover {
+  color: black;
+}
+.header-top-sm a {
+  color: inherit;
+  text-decoration: none;
+}
+.header-top-sm ahover {
+  color: black;
+}
