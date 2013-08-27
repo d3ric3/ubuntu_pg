@@ -40,8 +40,23 @@ module.exports = function (app, db, helper) {
 
 		if(alerts.length > 0)
 			res.render('user/register', { alerts: alerts })
-		else
+		else {
+			
+			helper.email.send({
+				from: 'smesupply@gmail.com',
+				to: b.txtEmail,
+				subject: 'SMESupply.com - Welcome to your new account signup',
+				html: helper.templates.replace({
+					email: b.txtEmail,
+					verifyEmailUrl: b.txtEmail
+				}, helper.templates.VERIFY_EMAIL)
+			});
+			//TO-DO: 1. display successful message, 2. prepare verify email route, 3. prevent unverify email login, 4. email cleanup on unverify email
+			// Confirm Your Email Address
+			// A confirmation email has been sent to the email address you provided. Click on the confirmation link in the email to activate your account.
+			// If you don't receive the confirmation email within one hour, check your email account's spam folder.
 			res.render('user/register')
+		}
 	});
 
 	app.get('/user/login', function (req, res) {

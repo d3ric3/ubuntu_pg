@@ -39,7 +39,7 @@ require('./routes/index')(app, db, helper);
 require('./routes/user')(app, db, helper);
 
 //api settings
-require('./api/users')(app, db)
+require('./api/users')(app, db);
 
 db.sequelize.sync().complete(function (err){
 	if (err) {
