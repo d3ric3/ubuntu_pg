@@ -1,4 +1,5 @@
 module.exports = {
+
 	login : {
 		url: '/user/login',
 		view: {
@@ -10,4 +11,5 @@ module.exports = {
 	logout: {
 		url: '/user/logout'
 	}
+	
 }

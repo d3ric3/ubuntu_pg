@@ -45,7 +45,7 @@ db.sequelize.sync().complete(function (err){
 	if (err) {
 		throw err;
 	} else {
-		http.createServer(app).listen(app.get('port'), function(){
+		var server = http.createServer(app).listen(app.get('port'), function(){
 			console.log('NODE_ENV: ' + process.env.NODE_ENV);
 			console.log('Express server listening on port ' + app.get('port'));
 		});

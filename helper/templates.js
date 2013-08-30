@@ -13,7 +13,7 @@ templates.prototype.replace = function(objKeyValuePair, template) {
 }
 
 //keys: {email}, {verifyEmailUrl}
-templates.prototype.VERIFY_EMAIL = 
+templates.prototype.VERIFY_EMAIL_CONTENT = 
 "<b>Dear valued customer,</b>" +
 "<p>Thank you for choosing SMESupply.com, Malaysia SME sourcing site.</p>" +
 "<p>With this registration, you are able to get products quote, securing product supply and entitled to receive our newsletters and updates.</p>" +
@@ -26,5 +26,28 @@ templates.prototype.VERIFY_EMAIL =
 "<p></p>" +
 "<p><b>Best regards,</b>" +
 "<b><h3>SMESupply.com Malaysia</h3></b>";
+
+//keys: none
+templates.prototype.CONFIRM_EMAIL_MESSAGE = 
+"<b>Confirm You Email Address</b><br/><br/>" +
+"A confirmation email has been sent to the email address you provided. Click on the confirmation link in the email to active your account.<br/><br/>" +
+"If you don't receive the confirmation email within one hour, check your email account's spam folder<br/><br/>";
+
+//keys: none
+templates.prototype.SUCCESS_VERIFY_EMAIL = 
+"<p>Email address and username verified!</p>" +
+"<p>Your account is activated.</p>" +
+"<p>You may log in now to gain access to SMESupply.com members only features</p>";
+
+//keys: none
+templates.prototype.EMAIL_VERIFIED_WARNING = 
+"<p>Email is verified</p>" +
+"<p>You may proceed with login to the site</p>";
+
+//keys: none
+templates.prototype.INTERNAL_SERVER_ERROR = 
+"<h3><b>Something's wrong!</b></h3>" +
+"<p>It looks as though we've broken something on our system. Don't panic - I've emailed <a href='mailto:d3ric3@gmail.com'>Derice</a> and told him what's wrong. He'll get to it as soon as he can.</p>" +
+"<p>In the meantime, please feel free to have a rant here</p>";
 
 module.exports = new templates();

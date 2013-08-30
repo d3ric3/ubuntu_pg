@@ -39,21 +39,25 @@ var login = function (req, res, next) {
 	if (!validate.isEmail(b.txtEmail) && username) alerts.push('Please provide valid email');
 	if (!password) alerts.push('Password can not be empty');
 	
+	// add error message to res.locals.alerts
 	if (alerts.length > 0)
 		views.addAlert(alerts);
 	else {
 		//look for user in db
 		db.user.find({
 			where: { email: username }
-		})
-		.error(function (err) { 
+		}).error(function (err) { 
 			return next(err);
-		})
-		.success(function (user) {
+		}).success(function (user) {
 			var u = user;
 
 			if(u == null) {
-				views.addAlert('email does not exist in our system', res);
+				views.addAlert('Email does not exist in our system', res);
+				return next();
+			}
+
+			if (u.isActive == false) {
+				views.addAlert('Email not verify, please check your mailbox/spam folder for verification steps');
 				return next();
 			}
 
@@ -65,7 +69,7 @@ var login = function (req, res, next) {
 					if(hashed_pass == u.password)
 						startUserSession(u, rememberMe, req, res, next);
 					else {
-						views.addAlert('invalid password');
+						views.addAlert('Invalid password');
 						return next();
 					}
 				}

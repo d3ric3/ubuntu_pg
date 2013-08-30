@@ -11,7 +11,8 @@
     "less-middleware": "*",
     "pg": "2.2.0",
     "sequelize": "2.0.0-alpha2",
-    "nodemailer": "0.5.2"
+    "nodemailer": "0.5.2",
+    "async": "0.2.9"
   },
   "devDependencies": {
     "mocha": "1.12.0",

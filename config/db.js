@@ -21,4 +21,5 @@ module.exports = {
 			db: 'ubuntu_pg_test'
 		}
 	}
+	
 }

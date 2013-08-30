@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 		password: { type: DataTypes.STRING, allowNull: false },
 		salt: DataTypes.STRING,
 		accessToken: { type: DataTypes.STRING, unique: true },
-		isActive: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
+		isActive: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+		verifyToken: { type: DataTypes.STRING }
 	});
 }

@@ -2,7 +2,8 @@
 
  	app.get('/', function (req, res) {
  		var username = req.session.uat == null ? 'anonymous' : req.session.uat.username;
- 		res.render('index', { title: username } );
+ 		res.render('error', { message: helper.templates.INTERNAL_SERVER_ERROR });
+ 		//res.render('index', { title: username } );
  	});
 
  	app.get('/start', function (req, res) { 		
@@ -22,7 +23,8 @@
  		res.clearCookie('name');
  		req.session.destroy(function(){});
  		res.render('index', { title: helper.guid() } );
- 	})
+ 	});
+
  }
 
  	// cookie and cookie session sample

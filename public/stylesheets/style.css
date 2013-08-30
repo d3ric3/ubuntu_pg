@@ -18,6 +18,9 @@
 .display-none {
   display: none;
 }
+.ww {
+  word-wrap: break-word;
+}
 /* override twitter bootstrap */
 .row {
   margin-top: 7.5px;
