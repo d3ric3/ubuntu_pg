@@ -1,0 +1,19 @@
+extends ../partial_views/layout
+
+block content
+    div#backboneView.container
+        form(method='post', action='reset')
+                div.row
+                    div.col-lg-6.col-lg-offset-3
+                        include ../partial_views/alerts
+                div.row
+                    div.col-lg-6.col-lg-offset-3
+                        label.control-label(for='txtEmail'): span.
+                            Reset your forgotten password. <br/>Email:
+                        input#txtEmail.form-control(name='txtEmail', type='email', placeholder='email')
+                div.row
+                    div.col-lg-6.col-lg-offset-3
+                        input#btnReset.btn.btn-default.form-control(name='btnReset', type='submit', value='Reset')
+
+block backbone_script
+    script(src='/javascripts/user-reset.js')

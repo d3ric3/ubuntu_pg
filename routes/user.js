@@ -1,6 +1,6 @@
 var async = require('async')
 ,	util = require('util');
-
+// TO-DO: 1. email cleanup on unverify email, 2. Complete 500 error page with a form 3. captcha 4. password reset logic
 module.exports = function (app, db, helper) {
 
 	app.get('/crete', function (req, res) {
@@ -100,7 +100,6 @@ module.exports = function (app, db, helper) {
 						res.render('success', { message: helper.templates.CONFIRM_EMAIL_MESSAGE });
 					}
 			});
-			// // TO-DO: 1. email cleanup on unverify email, 2. Complete 500 error page with a form
 		}
 	});
 
@@ -141,6 +140,13 @@ module.exports = function (app, db, helper) {
 			res.render('user/login');
 		else
 			res.redirect('/');
+	});
+
+	app.get('/user/reset', function (req, res) {
+		res.render('user/reset');
+	});
+	app.post('/user/reset', function (req, res) {
+		res.render('user/reset');
 	});
 
 	app.get('/user/logout', function (req, res) {

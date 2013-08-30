@@ -31,7 +31,11 @@ html(lang='en')
 													li: a(href='#')= 'Company'
 													li: a(href='#')= 'Individual'
 													li: a(href='#')= 'Others'
-										li: a(href='#')= 'Inquiry'
+										li.dropdown
+											a.dropdown-toggle(href='#', data-toggle='dropdown')= 'Inquiry'
+												ul.dropdown-menu
+													li: a(href='#')= 'FAQ'
+													li: a(href='#')= 'Resource Center'
 									- if (req.session.uat != null)
 										ul.nav.navbar-nav.navbar-right
 											li: a(href='/user/logout')= 'Logout'

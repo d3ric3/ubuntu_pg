@@ -1,26 +1,269 @@
 extends ../partial_views/layout
 
 block content
-	div#backboneView.container
-		form(method='post', action='register')
-			div.row
-				div.col-lg-6.col-lg-offset-3
-					include ../partial_views/alerts
-			div.row
-				div.col-lg-6.col-lg-offset-3
-					label.control-label(for='txtEmail') Email
-					input#txtEmail.form-control(name='txtEmail', type='email', placeholder='email')
-			div.row
-				div.col-lg-6.col-lg-offset-3
-					label.control-label(for='txtPassword') Password
-					input#txtPassword.form-control(name='txtPassword', type='password', placeholder='password')
-			div.row
-				div.col-lg-6.col-lg-offset-3
-					label.control-label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
-					input#txtConfirmPassword.form-control(name='txtConfirmPassword', type='password', placeholder='confirm password')
-			div.row
-				div.col-lg-6.col-lg-offset-3
-					input#btnRegister.btn.btn-default.form-control(name='btnRegister', type='submit', value='Register')
+    div#backboneView.container
+        form(method='post', action='register')
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    include ../partial_views/alerts
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    label.control-label(for='txtEmail') Email
+                    input#txtEmail.form-control(name='txtEmail', type='email', placeholder='email')
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    label.control-label(for='txtPassword') Password
+                    input#txtPassword.form-control(name='txtPassword', type='password', placeholder='password')
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    label.control-label(for='txtConfirmPassword', type='password') Confirm&nbsp;Password
+                    input#txtConfirmPassword.form-control(name='txtConfirmPassword', type='password', placeholder='confirm password')
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    | <h6>By clicking Sign Up, you agree to our <a data-toggle='modal' href='#toc'>Terms of Service</a> 
+                    | and that you have read and understand our <a data-toggle='modal' href='#pp'>Privacy Policy</a>.</h6>
+            div.row
+                div.col-lg-6.col-lg-offset-3
+                    input#btnRegister.btn.btn-default.form-control(name='btnRegister', type='submit', value='Register')
 
+    div.modal.fade(id='toc', tabindex='-1', role='dialog', aria-labelledby='tocModelLabel', aria-hidden='true')
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                  button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                  h4: b= 'User Agreement/Terms of Service'
+                div.modal-body: div(style='font-size:0.8em;').
+                  <p>The following describes the terms on which Carlist.my offers you access to our services.</p>
+                  <h3>Introduction</h3>
+                  <p>Welcome to Carlist.my. By using the services on the Carlist.my website, you are agreeing to the following terms with iCar Asia Sdn Bhd.</p>
+                  <p>Before you may become a member of Carlist.my, you must read and accept all of the terms and conditions in,and linked to, this User Agreement and the Privacy Policy.</p>
+                  <p>We strongly recommend that, as you read this User Agreement, you also access and read the linked information.</p>
+                  <p>The Agreement that applies on any of our domains and subdomains is always the agreement that appears in the footer of each website.</p>
+                  <p>This User Agreement is effective on January 01, 2009, for current users, and upon acceptance for new users.</p>
+                  <h3>Your Account</h3>
+                  <p>If you use this website, you are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer, and you agree to accept responsibility for all activities that occur under your account or password.</p>
+                  <p>If you are under 18, you may use Carlist.my only with involvement of a parent or guardian.</p>
+                  <p>Carlist.my reserves the right to refuse service, terminate accounts, remove or edit content, or cancel orders in their sole discretion.</p>
+                  <p>In order to access our website, you may be required to provide current, accurate identification, contact, and other information as part of the registration process and/or continued usage of the website offered by Carlist.my and its subsidiaries or affiliated companies.</p>
+                  <p>You are responsible for maintaining the confidentiality of your Carlist.my account and password and are responsible for all activities that occur under your account.</p>
+                  <p>Further, your Carlist.my account and User ID may not be transferred or sold to another party.</p>
+                  <h3>Code of Conduct</h3>
+                  <p>As a condition of your use of the Carlist.my website, you agree not to upload, post, email, or otherwise publish through this website any content:</p>
+                  <ul>
+                      <li>that is unlawful, harmful, threatening, abusive, harassing, defamatory, libellous, invasive of another's privacy, or is harmful to minors in any way;</li>
+                      <li>that is pornographic or depicts a human being engaged in actual sexual conduct including but not limited to:
+                          <ol>
+                              <li>sexual intercourse, including genital-genital, oral-genital, anal-genital, or oral-anal, whether between persons of the same or opposite sex, or</li>
+                              <li>bestiality, or</li>
+                              <li>masturbation, or</li>
+                              <li>sadistic or masochistic abuse, or</li>
+                              <li>lascivious exhibition of the genitals or pubic area of any person.</li>
+                          </ol>
+                      </li>
+                      <li>that harasses, degrades, intimidates or is hateful toward an individual or group of individuals on the basis of religion, gender, sexual orientation, race, ethnicity, age, or disability;</li>
+                      <li>that impersonates any person or entity, including, but not limited to, a Carlist.my employee, or falsely states or otherwise misrepresents your affiliation with a person or entity (this provision does not apply to messages that are lawful non-deceptive parodies of public figures.);</li>
+                      <li>that includes personal or identifying information about another person without that person's explicit consent;</li>
+                      <li>that is false, deceptive, misleading, deceitful, mis-informative, or constitutes &quot;bait and switch&quot;;</li>
+                      <li>that infringes any patent, trademark, trade secret, copyright or other proprietary rights of any party, or content that you do not have a right to make available under any law or under contractual or fiduciary relationships;</li>
+                      <li>that constitutes or contains &quot;affiliate marketing,&quot; &quot;link referral code,&quot; &quot;junk mail,&quot; &quot;spam,&quot; &quot;chain letters,&quot; &quot;pyramid schemes,&quot; or unsolicited commercial advertisement;</li>
+                      <li>that constitutes or contains any form of advertising or solicitation if:
+                          <ol>
+                              <li>posted in areas of the Carlist.my websites which are not designated for such purposes; or
+                              <li>emailed to Carlist.my users who have requested not to be contacted about other services, products or commercial interests.
+                              </li>
+                          </ol>
+                      </li>
+                      <li>that includes links to commercial services or web sites, except as allowed in &quot;services&quot;;</li>
+                      <li>that advertises any illegal services or the sale of any items the sale of which is prohibited or restricted by applicable law, including without limitation items the sale of which is prohibited or regulated by Malaysian law;</li>
+                      <li>that contains software viruses or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware or telecommunications equipment;</li>
+                      <li>that disrupts the normal flow of dialogue with an excessive number of messages (flooding attack) to the website, or that otherwise negatively affects other users' ability to use the website; or</li>
+                      <li>that employs misleading email addresses, or forged headers or otherwise manipulated identifiers in order to disguise the origin of content transmitted through the website.</li>
+                  </ul>
+                  <p>Additionally, you agree not to:</p>
+                  <ul>
+                      <li>contact anyone who has asked not to be contacted;</li>
+                      <li>&quot;stalk&quot; or otherwise harrass anyone;</li>
+                      <li>collect personal information about other users for commercial or unlawful purposes;</li>
+                      <li>use automated means, including spiders, robots, crawlers, data mining tools, or the like to download data from the website - unless expressly permitted by Carlist.my;</li>
+                      <li>post non-local or otherwise irrelevant content, repeatedly post the same or similar content or otherwise impose an unreasonable or disproportionately large load on our infrastructure;</li>
+                      <li>post the same item or service in more than one classified category or forum, or in more than one metropolitan area; or</li>
+                      <li>attempt to gain unauthorized access to Carlist.my computer systems or engage in any activity that disrupts, diminishes the quality of, interferes with the performance of, or impairs the functionality of, the Service or the Carlist.my.</li>
+                  </ul>
+                  <h3>Copyright</h3>
+                  <p>All content included on this site, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the property of iCar Asia Sdn Bhd or its content suppliers and protected by Malaysian and international copyright laws.</p>
+                  <p>The compilation of all content on this site is the exclusive property of iCar Asia Sdn Bhd and protected by Malaysian and international copyright laws.</p>
+                  <p>All software used on this site is the property of iCar Asia Sdn Bhd or its software suppliers and protected by Malaysian and international copyright laws.</p>
+                  <h3>Trademarks</h3>
+                  <p>Carlist.my graphics, logos, page headers, button icons, scripts, and service names are trademarks, registered trademarks or trade dress of Carlist.my in Malaysia and/or other countries.
+                  <p>Carlist.my's trademarks and trade dress may not be used in connection with any product or service that is not Carlist.my's, in any manner that is likely to cause confusion among customers, or in any manner that disparages or discredits Carlist.my.</p>
+                  <p>All other trademarks not owned by Carlist.my that appear on this site are the property of their respective owners, who may or may not be affiliated with, connected to, or sponsored by Carlist.my</p>
+                  <h3>License and Site Access</h3>
+                  <p>Carlist.my grants you a limited license to access and make personal use of this site and not to download (other than page caching) or modify it, or any portion of it, except with express written consent of Carlist.my.</p>
+                  <p>This license does not include any resale or commercial use of this site or its contents; any collection and use of any product listings, descriptions, or prices; any derivative use of this site or its contents; any downloading or copying of account information for the benefit of another merchant; or any use of data mining, robots, or similar data gathering and extraction tools.</p>
+                  <p>This site or any portion of this site may not be reproduced, duplicated, copied, sold, resold, visited, or otherwise exploited for any commercial purpose without express written consent of Carlist.my.</p>
+                  <p>You may not frame or utilize framing techniques to enclose any trademark, logo, or other proprietary information (including images, text, page layout, or form) of Carlist.my without express written consent.</p>
+                  <p>You may not use any meta tags or any other &quot;hidden text&quot; utilizing Carlist.my's name or trademarks without the express written consent of Carlist.my.</p>
+                  <p>Any unauthorized use terminates the permission or license granted by Carlist.my.</p>
+                  <p>You are granted a limited, revocable, and nonexclusive right to create a hyperlink to the home page of
+                      Carlist.my so long as the link does not portray Carlist.my, or its products or services in a false,
+                      misleading, derogatory, or otherwise offensive matter.</p>
+                  <p>You may not use any Carlist.my logo or other proprietary graphic or trademark as part of the link without
+                      express written permission.</p>
+                  <h3>Content</h3>
+                  <p>When you give us content, you grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free,
+                      sublicensable (through multiple tiers) right to exercise the copyright, trademark, publicity, and database
+                      rights (but no other rights) you have in the content, in any media known now or in the future.</p>
+                  <p>You represent and warrant that you own or otherwise control all of the rights to the content that you post;
+                      that the content is accurate; that use of the content you supply does not violate this User Agreement and
+                      will not cause injury to any person or entity; and that you will indemnify Carlist.my for all claims
+                      resulting from content you supply.</p>
+                  <p>Carlist.my has the right but not the obligation to monitor and edit or remove any activity or content.</p>
+                  <p>Carlist.my takes no responsibility and assumes no liability for any content posted by you or any third
+                      party.</p>
+                  <h3>Electronic Communications</h3>
+                  <p>When you visit Carlist.my or send e-mails to us, you are communicating with us electronically.</p>
+                  <p>You consent to receive communications from us electronically.</p>
+                  <p>We will communicate with you by e-mail or by posting notices on this site.</p>
+                  <p>You agree that all agreements, notices, disclosures and other communications that we provide to you
+                      electronically satisfy any legal requirement that such communications be in writing.</p>
+                  <h3>Advertisements and Promotions</h3>
+                  <p>Carlist.my runs advertisements and promotions. By using Carlist.my you agree that Carlist.my has the right to
+                      run such advertisements and promotions. The manner, mode and extent of advertising by Carlist.my are subject
+                      to change.</p>
+                  <p>Your correspondence or business dealings with, or participation in promotions of, advertisers found on or
+                      through the website, including payment and delivery of related goods or services, and any other terms,
+                      conditions, warranties or representations associated with such dealings, are solely between you and such
+                      advertiser.</p>
+                  <p>You agree that Carlist.my shall not be responsible or liable for any loss or damage of any sort incurred as
+                      the result of any such dealings or as the result of the presence of such advertisers on the website.</p>
+                  <h3>Privacy</h3>
+                  <p>We do not sell or rent your personal information to third parties for their marketing purposes without your
+                      explicit consent and we only use your information as described in the Privacy Policy.</p>
+                  <p>We view protection of users' privacy as a very important community principle.</p>
+                  <p>We understand clearly that you and your information is one of our most important assets.</p>
+                  <p>We store and process your information on computers located in the Malaysia that are protected by physical as
+                      well as technological security devices by our service providers.</p>
+                  <p>For a complete description of how we use and protect your personal information, see the Carlist.my Privacy
+                      Policy.</p>
+                  <p>If you object to your Information being transferred or used in this way please do not use our services.</p>
+                  <h3>No Agency</h3>
+                  <p>No agency, partnership, joint venture, employee-employer or franchiser-franchisee relationship is intended or
+                      created by this User Agreement.</p>
+                  <h3>Liability / Liability Disclaimer</h3>
+                  <p>You will not hold Carlist.my responsible for other users' content, actions or inactions, or items they
+                      list.</p>
+                  <p>We are not involved in the actual transaction between buyers and sellers.</p>
+                  <p>We do not guarantee the quality, safety or legality of items advertised, the truth or accuracy of users'
+                      content or listings, the ability of sellers to sell items, the ability of buyers to pay for items, or that a
+                      buyer or seller will actually complete a transaction.</p>
+                  <p>We do not transfer legal ownership of items from the seller to the buyer, and nothing in this User Agreement
+                      shall modify the governing provisions of section 19 of the Sale of Goods Act 1957, under which legal
+                      ownership of an item is transferred when the parties (i.e., seller and buyer) intend to transfer such legal
+                      ownership.</p>
+                  <p>Further, we cannot guarantee continuous or secure access to our services, and operation of the sites may be
+                      interfered with by numerous factors outside of our control.</p>
+                  <p>Accordingly, to the extent legally permitted, we exclude all implied warranties, terms and conditions.</p>
+                  <p>We are not liable for any loss of money, goodwill, or reputation, or any special, indirect, or consequential
+                      damages arising out of your use of our sites and services.</p>
+                  <p>Some jurisdictions do not allow the disclaimer of warranties or exclusion of damages, so such disclaimers and
+                      exclusions may not apply to you.</p>
+                  <p>Regardless of the previous paragraph, if we are found to be liable, our liability to you or to any third
+                      party is limited to the greater of the total fees you paid to us in the 12 months prior to the action giving
+                      rise to the liability.</p>
+                  <h3>Forum Disclaimer</h3>
+                  <p>Messages posted to our forum by members/users are solely the opinion and responsibility of the member of the
+                      public posting the message.</p>
+                  <p>We do not investigate nor can we confirm the truth and the veracity of information posted and we hereby
+                      expressly or impliedly disclaim any belief in the truth or falsity of any information posted by the sellers
+                      and users of this site.</p>
+                  <p>We do not endorse, support, represent or guarantee the truthfulness, accuracy or reliability of any
+                      communications posted in the forum/public areas or endorse any opinions expressed in the forum/public
+                      areas.</p>
+                  <p>Your visiting and browsing through this site shall be deemed acceptance by you of this disclaimer.</p>
+                  <h3>Release</h3>
+                  <p>If you have a dispute with one or more users, you release us (and our officers, directors, agents,
+                      subsidiaries, joint ventures and employees) from claims, demands and damages (actual and consequential) of
+                      every kind and nature, known and unknown, arising out of or in any way connected with such disputes.</p>
+                  <h3>Idemnity</h3>
+                  <p>You will indemnify and hold us (and our officers, directors, agents, subsidiaries, joint ventures and
+                      employees), harmless from any claim or demand, including reasonable legal fees, made by any third party due
+                      to or arising out of your breach of this User Agreement, or your violation of any law or the rights of a
+                      third party.</p>
+                  <h3>Variation of the User Agreement</h3>
+                  <p>Carlist.my reserves the right, at its sole discretion, to change, modify, add or remove any portion of the
+                      User Agreement, in whole or in part, at any time, and such modifications shall be effective immediately upon
+                      posting of the modified User Agreement.</p>
+                  <p>You agree to review the User Agreement periodically to be aware of such modifications and your continued
+                      access to or use of the Service shall be deemed your conclusive acceptance of the modified User
+                      Agreement.</p>
+                  <h3>General</h3>
+                  <p>Carlist.my is owned by iCar Asia Sdn Bhd.</p>
+                  <p>This User Agreement shall be governed in all respects by the laws of Malaysia. As such, laws are applied to
+                      agreements entered into and performed entirely within Malaysia and between Malaysian residents.</p>
+                  <p>Both parties submit to jurisdiction in Malaysia and further agree that any cause of action arising under this
+                      User Agreement shall be brought exclusively to a court in Malaysia.</p>
+                  <p>Carlist.my does not guarantee continuous, uninterrupted or secure access to our services, and the operation
+                      of our site may be interfered with by numerous factors outside of our control.</p>
+                  <p>If any provision of this User Agreement is held to be invalid or unenforceable, such provision shall be
+                      struck and the remaining provisions shall be enforced.</p>
+                  <p>Headings are for reference purposes only and do not limit the scope or extent of such section.</p>
+                  <p>Our failure to act with respect to a breach by you or others does not waive our right to act with respect to
+                      subsequent or similar breaches.</p>
+                  <p>We do not guarantee we will take action against all breaches of this User Agreement.</p>
+                  <p>The following Sections survive any termination of this User Agreement: Release, Content, Liability and
+                      Indemnity.</p>
+                div.modal-footer
+                  button.btn.btn-default(type='button', data-dismiss='modal')= 'Close'
+    div.modal.fade(id='pp', tabindex='-1', role='dialog', aria-labelledby='tocModelLabel', aria-hidden='true')
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                  button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                  h4: b= 'User Agreement/Terms of Service'
+                div.modal-body: div(style='font-size:0.8em;').
+                  <p>Carlist.my is committed to the privacy of all users to its Website www.carlist.my (&quot;Site&quot;).</p>
+                  <p>This Privacy Policy forms part of the User Agreement that can be found at www.carlist.my.</p>
+                  <p>By using and visiting the Site, you agree to this Policy and the uses made of personal information as set forth herein or amended hereafter.</p>
+                  <h3>What this Privacy Policy Covers</h3>
+                  <p>This Privacy Policy covers the Carlist.my's treatment of personally identifiable information that Carlist.my collects when you are on this Website and when you use the Carlist.my's services. This policy does not describe information collection policies on other sites, including those linked to or from the Site.</p>
+                  <h3>Type of Information Collected and How It's used</h3>
+                  <p>The Site does not collect any personally identifiable information (&quot;Personal Information&quot;) about you other than information that you affirmatively choose to submit to us and pertaining to yourself as well as information which may be obtained from your browser during registration.</p>
+                  <p>Such identifiable information may be your Name, Contact Number, Fax Number, Address, E-mail address, Company Address, Company Name, Company Telephone Number and Company Fax.</p>
+                  <p>Once you register with us and sign in to our services, you are anonymous to us.</p>
+                  <p>We will not, however, share any such Personal Information with other entities except for such entities that have been authorised to carry out specific services for the Carlist.my.</p>
+                  <p>We may also contact you from time to time to obtain your latest Personal Information for the purposes of serving you more efficiently and effectively.</p>
+                  <p>Unless you object, the Personal Information may be additionally used to:</p>
+                  <ul>
+                      <li>send e-mail base newsletters and other information to you as you request and to notify you from time to time about services offered by the Carlist.my or other entities associated with Carlist.my,</li>
+                      <li>monitor persons using and accessing the Website,</li>
+                      <li>profile and/or analyse the persons using and accessing the Website and their pattern and manner of usage,</li>
+                      <li>to customise the advertising and content you see, to fulfill your requests for certain products and services, and to contact you about specials and new products,</li>
+                  </ul>
+                  <p>whether directly or through our partners or affiliates but for the sole purpose of fulfilling the functions above.</p>
+                  <p>You are given the opportunity to 'opt-out' of having your Personal Information used for purposes not directly related to the Website at the point where we ask for it.</p>
+                  <p>If you do not wish to have information on you used in any of the aforesaid manner, you can e-mail us through our Feedback form accordingly.</p>
+                  <p>Except as provided herein and as required by law, your Personal Information will not be made available to third parties without your consent.</p>
+                  <p>Carlist.my may use your Personal Information for any purpose which Carlist.my may deem fit in its sole discretion.</p>
+                  <p>If you request that Carlist.my does not use your Personal Information in any particular manner, we will adopt all reasonable measures to observe your request but we may still use or disclose that Personal Information if s Carlist.my believes that the use and disclosure is reasonably necessary under the governing laws.</p>
+                  <p>Carlist.my shall preserve the contents of any communications which you send if Carlist.my is of the view that there is a legal requirement for doing so. Your communications may be monitored for purposes of trouble-shooting or maintenance purposes.</p>
+                  <h3>Cookies</h3>
+                  <p>A cookie is used to monitor the use of the Website and to gather information such as the sections of the website visited and other website usage information.</p>
+                  <p>The information is aggregated prior to such use and does not include any Personal Information. The Site uses cookies to serve you more efficiently when you revisit the Site.</p>
+                  <p>Most browsers are initially set up to accept cookies. However, you can set your browser to refuse all cookies or notify you when you receive a cookie and you will have the opportunity to either accept or reject it in each instance.</p>
+                  <p>Please note, however, that some parts of the services offered by the Carlist.my on this Site may not function properly if you refuse cookies.</p>
+                  <h3>Security</h3>
+                  <p>Carlist.my uses its best endeavours to store all Personal Information on servers with restricted access, and all electronic storage and transmission of Personal Information are secured with appropriate security technologies. Not to withstand the foregoing, Carlist.my cannot guarantee that such precautions would render the Site and Carlist.my's servers immune to security breaches.</p>
+                  <h3>Hyperlinks</h3>
+                  <p>When you are on the Site, you could be directed to other sites that are beyond the control of Carlist.my including hyperlinks to advertisers, merchants, sponsors, and content partners.</p>
+                  <p>You acknowledge that when you click on a hyperlink that leaves the Site, the site you are directed to is not within Carlist.my's control, and you acknowledge that Carlist.my shall not be responsible for those sites or any damages or losses incurred by you resulting thereto.</p>
+                  <h3>Changes to Our Privacy Policy</h3>
+                  <p>Carlist.my may change and update this Privacy Policy, including materially changing the use made of personal information described herein. Any change or update to our privacy policy will be posted on our Web site under &quot;Privacy Policy&quot; at least 30 days prior to their implementation. Your continued use of the Web site after the effective date of any changes will constitute your acceptance of all of the changes.</p>
+                  <h3>Effective date</h3>
+                  <p>This Privacy Policy is effective as of January 2009.</p>
+                  <h3>Contact Information</h3>
+                  <p>If you have any questions or comments regarding this Privacy Policy, please fill up the Contact Form from the Site.</p>
+                  <p>We welcome your feedback. Should you feel dissatisfied with any of our services, please contact us at Tel: 1300-30-4227, Fax: +603.2776.6010</p>
+                div.modal-footer
+                  button.btn.btn-default(type='button', data-dismiss='modal')= 'Close'
 block backbone_script
-	script(src='/javascripts/user-register.js')
+    script(src='/javascripts/user-register.js')
